@@ -7,6 +7,7 @@ from time import sleep
 
 load_dotenv("../.env")
 
+print("\nStarting MeterLog")
 
 # Set the Raspberry Pi GPIO pin number connected to the DO pin of the ldr light sensor module
 DO_PIN = 4
