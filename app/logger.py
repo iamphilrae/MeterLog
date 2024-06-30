@@ -37,10 +37,10 @@ try:
                 with open("storage/meterlog__" + current_day + ".log", "a") as file:
                     file.write(current_timestamp + "\n")
 
-                print(f"|-- Timestamp {current_timestamp} appended to {current_day}.log")
+                print(f"|-- ON @ {current_timestamp}")
 
             else:
-                print("|-- Light is gone!\n|")
+                print("|-- OFF\n|")
 
         # Update the previous state variable
         prev_light_state = light_state
