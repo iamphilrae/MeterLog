@@ -1,6 +1,5 @@
 import os
 import datetime
-import pytz
 import RPi.GPIO as GPIO
 
 from dotenv import load_dotenv
@@ -30,8 +29,8 @@ try:
             if light_state == GPIO.LOW:
 
                 # Get the current timestamp
-                current_day = datetime.datetime.now(pytz.utc).strftime("%Y-%m-%d")
-                current_timestamp = datetime.datetime.now(pytz.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                current_day = datetime.datetime.utcnow().strftime("%Y-%m-%d")
+                current_timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 # Append the timestamp to the file
                 with open("storage/" + current_day + ".log", "a") as file:
