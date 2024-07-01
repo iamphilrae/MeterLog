@@ -5,7 +5,7 @@ import RPi.GPIO as GPIO
 from dotenv import load_dotenv
 from time import sleep
 
-load_dotenv("../.env")
+load_dotenv("/home/kilncroft/MeterLog/.env")
 
 print("\nStarting MeterLog\n")
 
