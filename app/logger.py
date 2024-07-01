@@ -36,7 +36,7 @@ try:
                 current_timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 # Append the timestamp to the file
-                with open(working_directory + "/storage/" + current_day + ".log", "a") as file:
+                with open("{working_directory}/storage/" + current_day + ".log", "a") as file:
                     file.write(current_timestamp + "\n")
 
                 print(f"|-- ON @ {current_timestamp}")
