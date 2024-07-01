@@ -10,6 +10,10 @@ Authentication is via SSH. There is no password access.
 ssh kilncroft@kilncroft
 ```
 
+
+---
+
+
 ## Code Deployment
 
 
@@ -43,19 +47,68 @@ git pull
 ```
 
 
-### Installing Python Dependencies
+### Installing Dependencies
 
 ```bash
-# Install dependencies from Pipfile
-pipenv install
+# Python
+pip install -r requirements.txt
 
-# Start a virtual environment
-pipenv shell
+# PHP
+composer install
 ```
 
 
-### Running Application
+---
+
+
+
+## Running Logger 
+
+### Ad-hoc
 
 ```bash
-python app/...
+python app/logger.py
+```
+
+### As a Service
+
+```bash
+# Copy meterlog.service to systemd
+sudo cp /home/kilncroft/MeterLog/app/meterlog.service /etc/systemd/system/
+
+# Reload systemd to recognize the new service and enable it to start at boot
+sudo systemctl daemon-reload
+sudo systemctl enable meterlog.service
+
+# Start the service
+sudo systemctl start meterlog.service
+
+# Check the status
+sudo systemctl status meterlog.service
+```
+
+
+---
+
+
+
+## Uploading Logs to S3
+
+### Ad-hoc
+
+```bash
+php app/s3_upload.php
+```
+
+### As a Scheduled Task
+
+```bash
+# Ensure script is executable
+chmod +x /home/kilncroft/MeterLog/app/s3_upload.php
+
+# Open the cron editor
+crontab -e
+
+# Add the following line
+0 * * * * /usr/bin/php /home/kilncroft/MeterLog/app/s3_upload.php
 ```

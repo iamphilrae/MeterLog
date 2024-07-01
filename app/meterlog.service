@@ -1,0 +1,13 @@
+[Unit]
+Description=MeterLog
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/kilncroft/MeterLog/app/logger.py
+Restart=always
+User=kilncroft
+Group=kilncroft
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

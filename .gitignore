@@ -163,3 +163,5 @@ cython_debug/
 
 
 storage/*.log
+storage/transferred_files.txt
+vendor
