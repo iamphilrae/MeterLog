@@ -85,6 +85,12 @@ sudo systemctl start meterlog.service
 
 # Check the status
 sudo systemctl status meterlog.service
+
+# Ensure script is executable
+chmod +x /home/kilncroft/MeterLog/app/logger.py
+
+# Check logs of the service
+journalctl -u meterlog.service
 ```
 
 
