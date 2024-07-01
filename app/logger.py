@@ -16,7 +16,6 @@ DO_PIN = 4
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(DO_PIN, GPIO.IN)
 
-working_directory = os.getenv('WORKING_DIRECTORY')
 
 # Initialize the previous state variable with the current state
 prev_light_state = GPIO.input(DO_PIN)
@@ -36,7 +35,9 @@ try:
                 current_timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
                 # Append the timestamp to the file
-                with open("{working_directory}/storage/" + current_day + ".log", "a") as file:
+                working_directory = os.getenv('WORKING_DIRECTORY')
+
+                with open(working_directory + "/storage/" + current_day + ".log", "a") as file:
                     file.write(current_timestamp + "\n")
 
                 print(f"|-- ON @ {current_timestamp}")
