@@ -1,6 +1,11 @@
 # MeterLog
 
-Python scripts for a RaspberryPi to log electricity usage via a smart meter's "1000 imp/kWh" notification light.
+Python scripts for a RaspberryPi to log electricity usage via a smart meter's Metrology LED. 
+This sometimes flashes at 1000 imp/kWh or 3200 imp/kWh notification LED, depending on the meter.
+
+
+---
+
 
 ## Connecting to Pi
 
@@ -90,7 +95,7 @@ sudo systemctl status meterlog.service
 chmod +x /home/kilncroft/MeterLog/app/logger.py
 
 # Check logs of the service
-journalctl -u meterlog.service
+journalctl -u meterlog.service -f
 ```
 
 
@@ -115,6 +120,6 @@ chmod +x /home/kilncroft/MeterLog/app/s3_upload.php
 # Open the cron editor
 crontab -e
 
-# Add the following line
+# Add the following line - runs once every hour
 0 * * * * /usr/bin/php /home/kilncroft/MeterLog/app/s3_upload.php
 ```

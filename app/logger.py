@@ -49,7 +49,7 @@ try:
         prev_light_state = light_state
 
         # Add a small delay to prevent continuous readings
-        sleep(0.1)
+        sleep(0.01)
 
 except KeyboardInterrupt:
     # Clean up GPIO settings when Ctrl+C is pressed
